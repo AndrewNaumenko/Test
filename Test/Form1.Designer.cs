@@ -43,6 +43,7 @@
             this.butChooseTest.TabIndex = 0;
             this.butChooseTest.Text = "Выбрать тест";
             this.butChooseTest.UseVisualStyleBackColor = true;
+            this.butChooseTest.Click += new System.EventHandler(this.butChooseTest_Click);
             // 
             // butCreateTest
             // 
@@ -53,6 +54,7 @@
             this.butCreateTest.TabIndex = 1;
             this.butCreateTest.Text = "Создать тест";
             this.butCreateTest.UseVisualStyleBackColor = true;
+            this.butCreateTest.Click += new System.EventHandler(this.butCreateTest_Click);
             // 
             // butDB
             // 
@@ -63,6 +65,7 @@
             this.butDB.TabIndex = 2;
             this.butDB.Text = "База данных";
             this.butDB.UseVisualStyleBackColor = true;
+            this.butDB.Click += new System.EventHandler(this.butDB_Click);
             // 
             // labAdminUser
             // 
@@ -72,6 +75,7 @@
             this.labAdminUser.Size = new System.Drawing.Size(157, 13);
             this.labAdminUser.TabIndex = 3;
             this.labAdminUser.Text = "Вы вошли как: Пользователь";
+            this.labAdminUser.Click += new System.EventHandler(this.labAdminUser_Click);
             // 
             // Form1
             // 

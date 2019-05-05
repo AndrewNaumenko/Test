@@ -1,2 +1,11 @@
 D:\БГУИР\СПОВМ\Курсовой проект\Test\Test\Test\bin\Debug\Test.exe.config
 D:\Git\Test\Test\bin\Debug\Test.exe.config
+D:\Git\Test\Test\bin\Debug\Test.exe
+D:\Git\Test\Test\bin\Debug\Test.pdb
+D:\Git\Test\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+D:\Git\Test\Test\obj\Debug\Test.Form1.resources
+D:\Git\Test\Test\obj\Debug\Test.Properties.Resources.resources
+D:\Git\Test\Test\obj\Debug\Test.SignIn.resources
+D:\Git\Test\Test\obj\Debug\Test.csproj.GenerateResource.Cache
+D:\Git\Test\Test\obj\Debug\Test.exe
+D:\Git\Test\Test\obj\Debug\Test.pdb
