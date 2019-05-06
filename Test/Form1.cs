@@ -15,10 +15,25 @@ namespace Test
 {
     public partial class Form1 : Form
     {
-        public static bool admin = false; 
+        public static bool admin = false;
+        ToolStripLabel dateLabel;
+        ToolStripLabel timeLabel;
+        ToolStripLabel infoLabel;
+        Timer timer;
+
         public Form1()
         {
             InitializeComponent();
+            infoLabel = new ToolStripLabel();
+            infoLabel.Text = "Текущие дата и время:";
+            dateLabel = new ToolStripLabel();
+            timeLabel = new ToolStripLabel();
+            statusStrip1.Items.Add(infoLabel);
+            statusStrip1.Items.Add(dateLabel);
+            statusStrip1.Items.Add(timeLabel);
+            timer = new Timer() { Interval = 100 };
+            timer.Tick += timer_Tick;
+            timer.Start();
         }
 
         private void butChooseTest_Click(object sender, EventArgs e)
@@ -30,7 +45,11 @@ namespace Test
 
         private void butCreateTest_Click(object sender, EventArgs e)
         {
-            if (labAdminUser.Text == "Вы вошли как: Пользователь")
+            CreateTest CreateTest = new CreateTest();
+            CreateTest.Owner = this;
+            CreateTest.ShowDialog();
+
+           /* if (labAdminUser.Text == "Вы вошли как: Пользователь")
             {
                 MessageBox.Show("Авторизируйтесь");
             }
@@ -39,7 +58,7 @@ namespace Test
                 CreateTest CreateTest = new CreateTest();
                 CreateTest.Owner = this;
                 CreateTest.ShowDialog();
-            }
+            }*/
         }
 
         private void butDB_Click(object sender, EventArgs e)
@@ -54,6 +73,39 @@ namespace Test
             SignIn SignIn = new SignIn();
             SignIn.Owner = this;
             SignIn.ShowDialog();
+        }
+
+        private void labAdminUser_TextChanged(object sender, EventArgs e)
+        {
+            if (labAdminUser.Text == "Вы вошли как: Пользователь")
+            {
+                lQuitAdmin.Visible = false;
+            }
+            else 
+            {
+                lQuitAdmin.Visible = true;
+            }
+        }
+
+        private void lQuitAdmin_Click(object sender, EventArgs e)
+        {
+            admin = false;
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+
+            dateLabel.Text = DateTime.Now.ToLongDateString();
+            timeLabel.Text = DateTime.Now.ToLongTimeString();
+            
+            if (admin == true)
+            {
+                labAdminUser.Text = "Вы вошли как: Администратор";
+            }
+            else
+            {
+                labAdminUser.Text = "Вы вошли как: Пользователь";
+            }
         }
 
     }

@@ -9,3 +9,5 @@ D:\Git\Test\Test\obj\Debug\Test.SignIn.resources
 D:\Git\Test\Test\obj\Debug\Test.csproj.GenerateResource.Cache
 D:\Git\Test\Test\obj\Debug\Test.exe
 D:\Git\Test\Test\obj\Debug\Test.pdb
+D:\Git\Test\Test\obj\Debug\Test.CreateQuestion.resources
+D:\Git\Test\Test\obj\Debug\Test.CreateTest.resources

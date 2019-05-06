@@ -32,6 +32,8 @@
             this.butCreateTest = new System.Windows.Forms.Button();
             this.butDB = new System.Windows.Forms.Button();
             this.labAdminUser = new System.Windows.Forms.Label();
+            this.lQuitAdmin = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.SuspendLayout();
             // 
             // butChooseTest
@@ -75,13 +77,35 @@
             this.labAdminUser.Size = new System.Drawing.Size(157, 13);
             this.labAdminUser.TabIndex = 3;
             this.labAdminUser.Text = "Вы вошли как: Пользователь";
+            this.labAdminUser.TextChanged += new System.EventHandler(this.labAdminUser_TextChanged);
             this.labAdminUser.Click += new System.EventHandler(this.labAdminUser_Click);
+            // 
+            // lQuitAdmin
+            // 
+            this.lQuitAdmin.AutoSize = true;
+            this.lQuitAdmin.Location = new System.Drawing.Point(445, 9);
+            this.lQuitAdmin.Name = "lQuitAdmin";
+            this.lQuitAdmin.Size = new System.Drawing.Size(39, 13);
+            this.lQuitAdmin.TabIndex = 4;
+            this.lQuitAdmin.Text = "Выйти";
+            this.lQuitAdmin.Visible = false;
+            this.lQuitAdmin.Click += new System.EventHandler(this.lQuitAdmin_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Location = new System.Drawing.Point(0, 478);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(496, 22);
+            this.statusStrip1.TabIndex = 6;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(496, 500);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.lQuitAdmin);
             this.Controls.Add(this.labAdminUser);
             this.Controls.Add(this.butDB);
             this.Controls.Add(this.butCreateTest);
@@ -99,7 +123,9 @@
         private System.Windows.Forms.Button butChooseTest;
         private System.Windows.Forms.Button butCreateTest;
         private System.Windows.Forms.Button butDB;
-        private System.Windows.Forms.Label labAdminUser;
+        private System.Windows.Forms.Label lQuitAdmin;
+        public System.Windows.Forms.Label labAdminUser;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
 
