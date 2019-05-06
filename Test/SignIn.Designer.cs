@@ -61,6 +61,7 @@
             this.bAccept.TabIndex = 3;
             this.bAccept.Text = "Принять";
             this.bAccept.UseVisualStyleBackColor = true;
+            this.bAccept.Click += new System.EventHandler(this.bAccept_Click);
             // 
             // label2
             // 
