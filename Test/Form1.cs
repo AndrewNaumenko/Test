@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +6,16 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;*/
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,11 +55,7 @@ namespace Test
 
         private void butCreateTest_Click(object sender, EventArgs e)
         {
-            CreateTest CreateTest = new CreateTest();
-            CreateTest.Owner = this;
-            CreateTest.ShowDialog();
-
-           /* if (labAdminUser.Text == "Вы вошли как: Пользователь")
+            if (labAdminUser.Text == "Вы вошли как: Пользователь")
             {
                 MessageBox.Show("Авторизируйтесь");
             }
@@ -58,7 +64,7 @@ namespace Test
                 CreateTest CreateTest = new CreateTest();
                 CreateTest.Owner = this;
                 CreateTest.ShowDialog();
-            }*/
+            }
         }
 
         private void butDB_Click(object sender, EventArgs e)

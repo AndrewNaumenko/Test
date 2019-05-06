@@ -45,6 +45,7 @@
             this.CBchooseTopic.Name = "CBchooseTopic";
             this.CBchooseTopic.Size = new System.Drawing.Size(121, 21);
             this.CBchooseTopic.TabIndex = 0;
+            this.CBchooseTopic.SelectedIndexChanged += new System.EventHandler(this.CBchooseTopic_SelectedIndexChanged);
             // 
             // lCchooseTopic
             // 
@@ -62,9 +63,9 @@
             this.lCreateTopic.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lCreateTopic.Location = new System.Drawing.Point(192, 21);
             this.lCreateTopic.Name = "lCreateTopic";
-            this.lCreateTopic.Size = new System.Drawing.Size(170, 19);
+            this.lCreateTopic.Size = new System.Drawing.Size(190, 19);
             this.lCreateTopic.TabIndex = 2;
-            this.lCreateTopic.Text = "Введите название темы";
+            this.lCreateTopic.Text = "Введите название  раздела";
             // 
             // tbCreateTopic
             // 
@@ -93,18 +94,19 @@
             // bCreate
             // 
             this.bCreate.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCreate.Location = new System.Drawing.Point(121, 335);
+            this.bCreate.Location = new System.Drawing.Point(117, 139);
             this.bCreate.Name = "bCreate";
-            this.bCreate.Size = new System.Drawing.Size(152, 48);
+            this.bCreate.Size = new System.Drawing.Size(153, 54);
             this.bCreate.TabIndex = 6;
             this.bCreate.Text = "Создать";
             this.bCreate.UseVisualStyleBackColor = true;
+            this.bCreate.Click += new System.EventHandler(this.bCreate_Click);
             // 
             // CreateTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 418);
+            this.ClientSize = new System.Drawing.Size(392, 214);
             this.Controls.Add(this.bCreate);
             this.Controls.Add(this.tbNameTest);
             this.Controls.Add(this.lNameTest);
