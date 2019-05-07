@@ -124,8 +124,8 @@
         private System.Windows.Forms.Button butCreateTest;
         private System.Windows.Forms.Button butDB;
         private System.Windows.Forms.Label lQuitAdmin;
-        public System.Windows.Forms.Label labAdminUser;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.Label labAdminUser;
     }
 }
 

@@ -29,11 +29,16 @@ namespace Test
         private OleDbConnection connection;
         private OleDbCommand command;
         private OleDbDataReader reader;*/
+        public  static string testName;
         private string topic;
+        private int key;
+        private DataBaseConnection db;
+        private List<string> request;
 
         public CreateTest()
         {
             InitializeComponent();
+            db = new DataBaseConnection();
           //  connectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=bdTest.accdb";
             //connection = new OleDbConnection(connectionString);
             GetFromBDTopic();
@@ -51,8 +56,7 @@ namespace Test
             }
             connection.Close();*/
 
-            List<string> request = new List<string>();
-            DataBaseConnection db = new DataBaseConnection();
+            request = new List<string>();
             request = db.severalSelectRequest("Select тема From Тема");
             for (int i = 0; i < request.Count();i++)
             CBchooseTopic.Items.Add(request[i].ToString());
@@ -74,6 +78,36 @@ namespace Test
 
         private void bCreate_Click(object sender, EventArgs e)
         {
+              if (tbNameTest.Text == "")
+              {
+                  MessageBox.Show("Введите название теста");
+              }
+              else
+              {
+                  if (CBchooseTopic.Text == "Новая")
+                  {
+                      db.insertRequest("insert into Тема (тема) values ('" + tbCreateTopic.Text + "')");
+                      topic = tbCreateTopic.Text;
+                  }
+                  else
+                  {
+                      topic = CBchooseTopic.Text;
+                  }
+              }
+              request = new List<string>();
+              request = db.severalSelectRequest("Select id From Тема Where тема ='" + topic + "'");
+              key = Convert.ToInt16(request[0]);
+              testName = tbNameTest.Text;
+              db.insertRequest("insert into Тест (название,id_тема) values ('" + tbNameTest.Text + "','" + key + "')");
+
+            
+
+            CreateQuestion CQuestion = new CreateQuestion();
+            CQuestion.Owner = this;
+            CQuestion.ShowDialog();
+
+            this.Close();
+            
             /*connection.Open();
             if (CBchooseTopic.Text == "Новая")
             {

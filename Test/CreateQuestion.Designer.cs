@@ -34,11 +34,7 @@
             this.lRightAnswer = new System.Windows.Forms.Label();
             this.cbTemplate = new System.Windows.Forms.ComboBox();
             this.tbQuestion = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tbRightAnswer = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.lWrongAnswers = new System.Windows.Forms.Label();
             this.tbWrong1 = new System.Windows.Forms.TextBox();
             this.tbWrong2 = new System.Windows.Forms.TextBox();
@@ -49,12 +45,13 @@
             // bCreateQuestion
             // 
             this.bCreateQuestion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCreateQuestion.Location = new System.Drawing.Point(91, 380);
+            this.bCreateQuestion.Location = new System.Drawing.Point(74, 340);
             this.bCreateQuestion.Name = "bCreateQuestion";
             this.bCreateQuestion.Size = new System.Drawing.Size(152, 48);
             this.bCreateQuestion.TabIndex = 7;
             this.bCreateQuestion.Text = "Добавить новый вопрос";
             this.bCreateQuestion.UseVisualStyleBackColor = true;
+            this.bCreateQuestion.Click += new System.EventHandler(this.bCreateQuestion_Click);
             // 
             // lQuestion
             // 
@@ -108,54 +105,12 @@
             this.tbQuestion.Size = new System.Drawing.Size(247, 92);
             this.tbQuestion.TabIndex = 14;
             // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(147, 331);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(85, 17);
-            this.radioButton1.TabIndex = 15;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(39, 331);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 16;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // tbRightAnswer
             // 
             this.tbRightAnswer.Location = new System.Drawing.Point(16, 189);
             this.tbRightAnswer.Name = "tbRightAnswer";
             this.tbRightAnswer.Size = new System.Drawing.Size(440, 20);
             this.tbRightAnswer.TabIndex = 17;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(39, 351);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(80, 17);
-            this.checkBox2.TabIndex = 18;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(147, 351);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(85, 17);
-            this.radioButton2.TabIndex = 19;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // lWrongAnswers
             // 
@@ -191,36 +146,35 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(249, 380);
+            this.button1.Location = new System.Drawing.Point(232, 340);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 48);
             this.button1.TabIndex = 24;
             this.button1.Text = "Завершить создание теста";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // CreateQuestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(483, 440);
+            this.ClientSize = new System.Drawing.Size(484, 403);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbWrong3);
             this.Controls.Add(this.tbWrong2);
             this.Controls.Add(this.tbWrong1);
             this.Controls.Add(this.lWrongAnswers);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.tbRightAnswer);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.tbQuestion);
             this.Controls.Add(this.cbTemplate);
             this.Controls.Add(this.lRightAnswer);
             this.Controls.Add(this.lTemplate);
             this.Controls.Add(this.lQuestion);
             this.Controls.Add(this.bCreateQuestion);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreateQuestion";
             this.Text = "Создание нового вопроса";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateQuestion_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,11 +188,7 @@
         private System.Windows.Forms.Label lRightAnswer;
         private System.Windows.Forms.ComboBox cbTemplate;
         private System.Windows.Forms.TextBox tbQuestion;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.TextBox tbRightAnswer;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.Label lWrongAnswers;
         private System.Windows.Forms.TextBox tbWrong1;
         private System.Windows.Forms.TextBox tbWrong2;

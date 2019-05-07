@@ -25,9 +25,16 @@ namespace Test
 {
     public partial class CreateQuestion : Form
     {
+        private DataBaseConnection db;
+        private List<string> request;
+        private int key;
+        private int keyTest;
+        //private CreateTest CTest;
+
         public CreateQuestion()
         {
             InitializeComponent();
+            db = new DataBaseConnection();
             cbTemplate.SelectedIndex = 0;
         }
 
@@ -47,6 +54,93 @@ namespace Test
                 tbWrong2.Visible = true;
                 tbWrong3.Visible = true;
             } 
+        }
+
+        private void bCreateQuestion_Click(object sender, EventArgs e)
+        {
+         /*   db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + tbWrong1.Text + "')");
+            request = new List<string>();
+            request = db.severalSelectRequest("Select id From Неправильный_ответ Where неправильный_ответ ='" + tbWrong1.Text + "'");
+            key = Convert.ToInt16(request[0]);
+            db.insertRequest("insert into Неправильные_ответы (id_неправильные_ответы) values ('" + key + "')");
+            
+
+
+            db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + tbWrong2.Text + "')");
+            db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + tbWrong3.Text + "')");*/
+
+            if (tbQuestion.Text!="" && tbRightAnswer.Text!="")
+            {
+
+            string q = CreateTest.testName;
+
+            request = new List<string>();
+            request = db.severalSelectRequest("Select id From Тип_вопроса Where тип_вопроса ='" + cbTemplate.Text + "'");
+            key = Convert.ToInt16(request[0]);
+            db.insertRequest("insert into Вопрос (вопрос,ответ_правильный,id_типа_вопроса) values ('" + tbQuestion.Text + "','" + tbRightAnswer.Text + "','" + key + "')");
+            request = new List<string>();
+            request = db.severalSelectRequest("Select id From Тест Where название ='" + CreateTest.testName + "'");
+            keyTest = Convert.ToInt16(request[0]);
+            db.insertRequest("insert into Вопросы (id_тест,id_вопрос) values ('" + keyTest + "','" + key + "')");
+
+            request = new List<string>();
+            request = db.severalSelectRequest("Select Вопрос.id From Вопрос, Вопросы, Тест Where Тест.название = '" + CreateTest.testName + "' and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.id");
+            keyTest = Convert.ToInt16(request[0]);
+
+            if (cbTemplate.Text != "Написать ответ")
+            {
+                wrongAnswer(tbWrong1.Text);
+                wrongAnswer(tbWrong2.Text);
+                wrongAnswer(tbWrong3.Text);
+            }
+
+            MessageBox.Show("Вопрос успешно создан");
+           /* db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + tbWrong1.Text + "')");
+            request = new List<string>();
+            request = db.severalSelectRequest("Select id From Неправильный_ответ Where неправильный_ответ ='" + tbWrong1.Text + "'");
+            key = Convert.ToInt16(request[0]);
+            request = new List<string>();
+            request = db.severalSelectRequest("Select Вопрос.id From Вопрос, Вопросы, Тест Where Тест.название = '" + CTest.testName + "' and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.and Тест.id");
+            keyTest = Convert.ToInt16(request[0]);
+            db.insertRequest("insert into Неправильные_ответы (id_вопроса,id_неправильные_ответы) values ('" + keyTest + "','" + key + "')");
+
+            db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + tbWrong2.Text + "')");
+            request = new List<string>();
+            request = db.severalSelectRequest("Select id From Неправильный_ответ Where неправильный_ответ ='" + tbWrong2.Text + "'");
+            key = Convert.ToInt16(request[0]);
+            db.insertRequest("insert into Неправильные_ответы (id_вопроса,id_неправильные_ответы) values ('" + keyTest + "','" + key + "')");
+
+            db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + tbWrong3.Text + "')");
+            request = new List<string>();
+            request = db.severalSelectRequest("Select id From Неправильный_ответ Where неправильный_ответ ='" + tbWrong3.Text + "'");
+            key = Convert.ToInt16(request[0]);
+            db.insertRequest("insert into Неправильные_ответы (id_вопроса,id_неправильные_ответы) values ('" + keyTest + "','" + key + "')");*/
+            }
+        }
+
+        private void wrongAnswer(string answer)
+        {
+            db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + answer + "')");
+            request = new List<string>();
+            request = db.severalSelectRequest("Select id From Неправильный_ответ Where неправильный_ответ ='" + answer + "'");
+            key = Convert.ToInt16(request[0]);
+            db.insertRequest("insert into Неправильные_ответы (id_вопроса,id_неправильные_ответы) values ('" + keyTest + "','" + key + "')");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            testCreatingEnd();
+        }
+
+        private void CreateQuestion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            testCreatingEnd();
+        }
+
+        private void testCreatingEnd()
+        {
+            MessageBox.Show("Тест успешно создан");
+            this.Close();
         }
     }
 }

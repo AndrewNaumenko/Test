@@ -50,5 +50,13 @@ namespace Test
             connection.Close();
             return request;
         }
+
+        public void insertRequest(string cmd)
+        {
+            connection.Open();
+            command = new OleDbCommand(cmd, connection);
+            command.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }
