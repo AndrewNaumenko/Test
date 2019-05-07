@@ -29,7 +29,8 @@ namespace Test
         private OleDbConnection connection;
         private OleDbCommand command;
         private OleDbDataReader reader;*/
-        public  static string testName;
+       // public  static string testName;
+        public static string testName;
         private string topic;
         private int key;
         private DataBaseConnection db;

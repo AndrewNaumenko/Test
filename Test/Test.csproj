@@ -101,6 +101,9 @@
     <Compile Include="TemplateWrite.Designer.cs">
       <DependentUpon>TemplateWrite.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ChooseTest.resx">
+      <DependentUpon>ChooseTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateQuestion.resx">
       <DependentUpon>CreateQuestion.cs</DependentUpon>
     </EmbeddedResource>
