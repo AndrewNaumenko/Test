@@ -49,12 +49,19 @@ namespace Test
             login = reader[0].ToString();
             password = reader[1].ToString();
             connection.Close();*/
+            try
+            {
             List<string> request = new List<string>();
             DataBaseConnection db = new DataBaseConnection();
             request = db.severalSelectRequest("Select логин From Авторизация");
             login = request[0].ToString();
             request = db.severalSelectRequest("Select пароль From Авторизация");
             password = request[0].ToString();
+            }
+             catch
+             {
+                 MessageBox.Show("Не все поля были заполнены");
+             }
            // login = db.selectRequest("Select логин From Авторизация");
           //  password = db.selectRequest("Select пароль From Авторизация");
 
@@ -63,6 +70,8 @@ namespace Test
 
         private void bAccept_Click(object sender, EventArgs e)
         {
+            try
+            {
             GetFromBDLoginPassword();
             if (Form1.admin == true)
             {
@@ -70,7 +79,7 @@ namespace Test
             }
             else 
             {
-                if ((tbLogin.Text == login) && (tbPassword.Text == password))
+                if ((tbLogin.Text == login) || (tbPassword.Text == password))
                 {
                     MessageBox.Show("Вы успешно авторизировались");
                     Form1.admin = true;
@@ -80,6 +89,12 @@ namespace Test
                     MessageBox.Show("Вы ввели неправильный логин или пароль");
                 }
             }
+
+            }
+             catch
+             {
+                 MessageBox.Show("Не все поля были заполнены");
+             }
            
         }
     }

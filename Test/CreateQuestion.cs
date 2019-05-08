@@ -29,6 +29,7 @@ namespace Test
         private List<string> request;
         private int key;
         private int keyTest;
+        private int keyQuestion;
         //private CreateTest CTest;
 
         public CreateQuestion()
@@ -68,11 +69,12 @@ namespace Test
 
             db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + tbWrong2.Text + "')");
             db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + tbWrong3.Text + "')");*/
-
-            if (tbQuestion.Text!="" && tbRightAnswer.Text!="")
+           // try 
+           // { 
+            if (tbQuestion.Text != "" && tbRightAnswer.Text != "")
             {
 
-            string q = CreateTest.testName;
+            //string q = CreateTest.testName;
 
             request = new List<string>();
             request = db.severalSelectRequest("Select id From Тип_вопроса Where тип_вопроса ='" + cbTemplate.Text + "'");
@@ -81,11 +83,12 @@ namespace Test
             request = new List<string>();
             request = db.severalSelectRequest("Select id From Тест Where название ='" + CreateTest.testName + "'");
             keyTest = Convert.ToInt16(request[0]);
-            db.insertRequest("insert into Вопросы (id_тест,id_вопрос) values ('" + keyTest + "','" + key + "')");
 
             request = new List<string>();
-            request = db.severalSelectRequest("Select Вопрос.id From Вопрос, Вопросы, Тест Where Тест.название = '" + CreateTest.testName + "' and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.id");
-            keyTest = Convert.ToInt16(request[0]);
+            request = db.severalSelectRequest("Select Вопрос.id From Вопрос Where Вопрос.вопрос = '" + tbQuestion.Text + "' and Вопрос.ответ_правильный = '" + tbRightAnswer.Text + "' ");
+            keyQuestion = Convert.ToInt16(request[0]);
+
+            db.insertRequest("insert into Вопросы (id_тест,id_вопрос) values ('" + keyTest + "','" + keyQuestion + "')");
 
             if (cbTemplate.Text != "Написать ответ")
             {
@@ -115,26 +118,36 @@ namespace Test
             request = db.severalSelectRequest("Select id From Неправильный_ответ Where неправильный_ответ ='" + tbWrong3.Text + "'");
             key = Convert.ToInt16(request[0]);
             db.insertRequest("insert into Неправильные_ответы (id_вопроса,id_неправильные_ответы) values ('" + keyTest + "','" + key + "')");*/
+            
             }
+          /*  }
+            catch
+            {
+                MessageBox.Show("Не все поля были заполнены");
+            }*/
         }
 
         private void wrongAnswer(string answer)
         {
+           // try
+           // {
             db.insertRequest("insert into Неправильный_ответ (неправильный_ответ) values ('" + answer + "')");
             request = new List<string>();
             request = db.severalSelectRequest("Select id From Неправильный_ответ Where неправильный_ответ ='" + answer + "'");
             key = Convert.ToInt16(request[0]);
-            db.insertRequest("insert into Неправильные_ответы (id_вопроса,id_неправильные_ответы) values ('" + keyTest + "','" + key + "')");
+            db.insertRequest("insert into Неправильные_ответы (id_вопроса,id_неправильные_ответы) values ('" + keyQuestion + "','" + key + "')");
+           /* }
+             catch
+             {
+                 MessageBox.Show("Не все поля были заполнены");
+             }*/
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            testCreatingEnd();
-        }
-
-        private void CreateQuestion_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            testCreatingEnd();
+           // testCreatingEnd();
+            MessageBox.Show("Тест успешно создан");
+            this.Close();
         }
 
         private void testCreatingEnd()

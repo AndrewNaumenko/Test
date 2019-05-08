@@ -16,5 +16,10 @@ namespace Test
         {
             InitializeComponent();
         }
+
+        private void Results_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

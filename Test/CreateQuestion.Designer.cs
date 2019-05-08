@@ -174,7 +174,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CreateQuestion";
             this.Text = "Создание нового вопроса";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CreateQuestion_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

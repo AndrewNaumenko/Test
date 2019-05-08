@@ -56,11 +56,17 @@ namespace Test
                 CBchooseTopic.Items.Add(reader[0].ToString());
             }
             connection.Close();*/
-
+            try
+            { 
             request = new List<string>();
             request = db.severalSelectRequest("Select тема From Тема");
             for (int i = 0; i < request.Count();i++)
             CBchooseTopic.Items.Add(request[i].ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Не все поля были заполнены");
+            }
         }
 
         private void CBchooseTopic_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,6 +85,8 @@ namespace Test
 
         private void bCreate_Click(object sender, EventArgs e)
         {
+           // try
+           // { 
               if (tbNameTest.Text == "")
               {
                   MessageBox.Show("Введите название теста");
@@ -108,6 +116,11 @@ namespace Test
             CQuestion.ShowDialog();
 
             this.Close();
+            /*}
+            catch
+            {
+                MessageBox.Show("Не все поля были заполнены");
+            }*/
             
             /*connection.Open();
             if (CBchooseTopic.Text == "Новая")
