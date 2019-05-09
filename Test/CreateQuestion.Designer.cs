@@ -40,12 +40,14 @@
             this.tbWrong2 = new System.Windows.Forms.TextBox();
             this.tbWrong3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.cbScore = new System.Windows.Forms.ComboBox();
+            this.lScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bCreateQuestion
             // 
             this.bCreateQuestion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bCreateQuestion.Location = new System.Drawing.Point(74, 340);
+            this.bCreateQuestion.Location = new System.Drawing.Point(74, 386);
             this.bCreateQuestion.Name = "bCreateQuestion";
             this.bCreateQuestion.Size = new System.Drawing.Size(152, 48);
             this.bCreateQuestion.TabIndex = 7;
@@ -57,7 +59,7 @@
             // 
             this.lQuestion.AutoSize = true;
             this.lQuestion.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lQuestion.Location = new System.Drawing.Point(12, 55);
+            this.lQuestion.Location = new System.Drawing.Point(12, 101);
             this.lQuestion.Name = "lQuestion";
             this.lQuestion.Size = new System.Drawing.Size(117, 19);
             this.lQuestion.TabIndex = 9;
@@ -77,7 +79,7 @@
             // 
             this.lRightAnswer.AutoSize = true;
             this.lRightAnswer.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lRightAnswer.Location = new System.Drawing.Point(12, 167);
+            this.lRightAnswer.Location = new System.Drawing.Point(12, 213);
             this.lRightAnswer.Name = "lRightAnswer";
             this.lRightAnswer.Size = new System.Drawing.Size(195, 19);
             this.lRightAnswer.TabIndex = 12;
@@ -91,15 +93,15 @@
             "Написать ответ",
             "Выбрать один из вариантов ответов",
             "Выбрать один ответ"});
-            this.cbTemplate.Location = new System.Drawing.Point(209, 22);
+            this.cbTemplate.Location = new System.Drawing.Point(222, 22);
             this.cbTemplate.Name = "cbTemplate";
-            this.cbTemplate.Size = new System.Drawing.Size(247, 21);
+            this.cbTemplate.Size = new System.Drawing.Size(234, 21);
             this.cbTemplate.TabIndex = 13;
             this.cbTemplate.SelectedIndexChanged += new System.EventHandler(this.cbTemplate_SelectedIndexChanged);
             // 
             // tbQuestion
             // 
-            this.tbQuestion.Location = new System.Drawing.Point(209, 56);
+            this.tbQuestion.Location = new System.Drawing.Point(209, 102);
             this.tbQuestion.Multiline = true;
             this.tbQuestion.Name = "tbQuestion";
             this.tbQuestion.Size = new System.Drawing.Size(247, 92);
@@ -107,7 +109,7 @@
             // 
             // tbRightAnswer
             // 
-            this.tbRightAnswer.Location = new System.Drawing.Point(16, 189);
+            this.tbRightAnswer.Location = new System.Drawing.Point(16, 235);
             this.tbRightAnswer.Name = "tbRightAnswer";
             this.tbRightAnswer.Size = new System.Drawing.Size(440, 20);
             this.tbRightAnswer.TabIndex = 17;
@@ -116,7 +118,7 @@
             // 
             this.lWrongAnswers.AutoSize = true;
             this.lWrongAnswers.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lWrongAnswers.Location = new System.Drawing.Point(12, 222);
+            this.lWrongAnswers.Location = new System.Drawing.Point(12, 268);
             this.lWrongAnswers.Name = "lWrongAnswers";
             this.lWrongAnswers.Size = new System.Drawing.Size(220, 19);
             this.lWrongAnswers.TabIndex = 20;
@@ -124,21 +126,21 @@
             // 
             // tbWrong1
             // 
-            this.tbWrong1.Location = new System.Drawing.Point(16, 253);
+            this.tbWrong1.Location = new System.Drawing.Point(16, 299);
             this.tbWrong1.Name = "tbWrong1";
             this.tbWrong1.Size = new System.Drawing.Size(440, 20);
             this.tbWrong1.TabIndex = 21;
             // 
             // tbWrong2
             // 
-            this.tbWrong2.Location = new System.Drawing.Point(16, 279);
+            this.tbWrong2.Location = new System.Drawing.Point(16, 325);
             this.tbWrong2.Name = "tbWrong2";
             this.tbWrong2.Size = new System.Drawing.Size(440, 20);
             this.tbWrong2.TabIndex = 22;
             // 
             // tbWrong3
             // 
-            this.tbWrong3.Location = new System.Drawing.Point(16, 305);
+            this.tbWrong3.Location = new System.Drawing.Point(16, 351);
             this.tbWrong3.Name = "tbWrong3";
             this.tbWrong3.Size = new System.Drawing.Size(440, 20);
             this.tbWrong3.TabIndex = 23;
@@ -146,7 +148,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(232, 340);
+            this.button1.Location = new System.Drawing.Point(232, 386);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(152, 48);
             this.button1.TabIndex = 24;
@@ -154,11 +156,43 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // cbScore
+            // 
+            this.cbScore.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbScore.FormattingEnabled = true;
+            this.cbScore.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cbScore.Location = new System.Drawing.Point(222, 59);
+            this.cbScore.Name = "cbScore";
+            this.cbScore.Size = new System.Drawing.Size(234, 21);
+            this.cbScore.TabIndex = 26;
+            // 
+            // lScore
+            // 
+            this.lScore.AutoSize = true;
+            this.lScore.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lScore.Location = new System.Drawing.Point(12, 59);
+            this.lScore.Name = "lScore";
+            this.lScore.Size = new System.Drawing.Size(204, 19);
+            this.lScore.TabIndex = 25;
+            this.lScore.Text = "Баллов за правильный ответ";
+            // 
             // CreateQuestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 403);
+            this.ClientSize = new System.Drawing.Size(484, 484);
+            this.Controls.Add(this.cbScore);
+            this.Controls.Add(this.lScore);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbWrong3);
             this.Controls.Add(this.tbWrong2);
@@ -193,6 +227,8 @@
         private System.Windows.Forms.TextBox tbWrong2;
         private System.Windows.Forms.TextBox tbWrong3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox cbScore;
+        private System.Windows.Forms.Label lScore;
 
     }
 }

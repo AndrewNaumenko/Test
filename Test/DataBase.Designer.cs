@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // radioButton1
@@ -69,15 +70,15 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(389, 31);
+            this.listBox1.Location = new System.Drawing.Point(12, 78);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
+            this.listBox1.Size = new System.Drawing.Size(214, 381);
             this.listBox1.TabIndex = 23;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(70, 314);
+            this.button1.Location = new System.Drawing.Point(336, 388);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(153, 54);
             this.button1.TabIndex = 25;
@@ -88,7 +89,7 @@
             // 
             this.lResulteScores.AutoSize = true;
             this.lResulteScores.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lResulteScores.Location = new System.Drawing.Point(240, 249);
+            this.lResulteScores.Location = new System.Drawing.Point(447, 349);
             this.lResulteScores.Name = "lResulteScores";
             this.lResulteScores.Size = new System.Drawing.Size(0, 19);
             this.lResulteScores.TabIndex = 33;
@@ -97,7 +98,7 @@
             // 
             this.lResulteWrongAnswers.AutoSize = true;
             this.lResulteWrongAnswers.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lResulteWrongAnswers.Location = new System.Drawing.Point(240, 221);
+            this.lResulteWrongAnswers.Location = new System.Drawing.Point(447, 321);
             this.lResulteWrongAnswers.Name = "lResulteWrongAnswers";
             this.lResulteWrongAnswers.Size = new System.Drawing.Size(0, 19);
             this.lResulteWrongAnswers.TabIndex = 32;
@@ -106,7 +107,7 @@
             // 
             this.lResulteRightAnswers.AutoSize = true;
             this.lResulteRightAnswers.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lResulteRightAnswers.Location = new System.Drawing.Point(240, 190);
+            this.lResulteRightAnswers.Location = new System.Drawing.Point(447, 290);
             this.lResulteRightAnswers.Name = "lResulteRightAnswers";
             this.lResulteRightAnswers.Size = new System.Drawing.Size(0, 19);
             this.lResulteRightAnswers.TabIndex = 31;
@@ -115,7 +116,7 @@
             // 
             this.lResulteTime.AutoSize = true;
             this.lResulteTime.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lResulteTime.Location = new System.Drawing.Point(240, 160);
+            this.lResulteTime.Location = new System.Drawing.Point(447, 260);
             this.lResulteTime.Name = "lResulteTime";
             this.lResulteTime.Size = new System.Drawing.Size(0, 19);
             this.lResulteTime.TabIndex = 30;
@@ -124,7 +125,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(25, 249);
+            this.label4.Location = new System.Drawing.Point(232, 349);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(140, 19);
             this.label4.TabIndex = 29;
@@ -134,7 +135,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(25, 218);
+            this.label3.Location = new System.Drawing.Point(232, 318);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(170, 19);
             this.label3.TabIndex = 28;
@@ -144,7 +145,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(25, 190);
+            this.label2.Location = new System.Drawing.Point(232, 290);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 19);
             this.label2.TabIndex = 27;
@@ -154,17 +155,26 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(25, 160);
+            this.label1.Location = new System.Drawing.Point(232, 260);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(187, 19);
             this.label1.TabIndex = 26;
             this.label1.Text = "Время прохождения теста:";
             // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(236, 84);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(333, 160);
+            this.listBox2.TabIndex = 34;
+            // 
             // DataBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(580, 483);
+            this.ClientSize = new System.Drawing.Size(581, 469);
+            this.Controls.Add(this.listBox2);
             this.Controls.Add(this.lResulteScores);
             this.Controls.Add(this.lResulteWrongAnswers);
             this.Controls.Add(this.lResulteRightAnswers);
@@ -199,5 +209,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBox2;
     }
 }

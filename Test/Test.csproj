@@ -101,6 +101,12 @@
     <Compile Include="TemplateWrite.Designer.cs">
       <DependentUpon>TemplateWrite.cs</DependentUpon>
     </Compile>
+    <Compile Include="TeplateFewChoose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeplateFewChoose.Designer.cs">
+      <DependentUpon>TeplateFewChoose.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChooseTest.resx">
       <DependentUpon>ChooseTest.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +142,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TemplateWrite.resx">
       <DependentUpon>TemplateWrite.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeplateFewChoose.resx">
+      <DependentUpon>TeplateFewChoose.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

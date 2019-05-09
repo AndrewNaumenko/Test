@@ -44,10 +44,10 @@
             this.bAccept.TabIndex = 24;
             this.bAccept.Text = "Продолжить";
             this.bAccept.UseVisualStyleBackColor = true;
+            this.bAccept.Click += new System.EventHandler(this.bAccept_Click);
             // 
             // tbAnswer
             // 
-            this.tbAnswer.Enabled = false;
             this.tbAnswer.Location = new System.Drawing.Point(12, 194);
             this.tbAnswer.Multiline = true;
             this.tbAnswer.Name = "tbAnswer";
@@ -76,10 +76,11 @@
             // 
             // tbQuestion
             // 
-            this.tbQuestion.Enabled = false;
+            this.tbQuestion.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.tbQuestion.Location = new System.Drawing.Point(12, 39);
             this.tbQuestion.Multiline = true;
             this.tbQuestion.Name = "tbQuestion";
+            this.tbQuestion.ReadOnly = true;
             this.tbQuestion.Size = new System.Drawing.Size(559, 109);
             this.tbQuestion.TabIndex = 20;
             // 

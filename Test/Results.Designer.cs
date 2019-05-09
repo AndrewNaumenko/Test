@@ -48,6 +48,7 @@
             this.bAccept.TabIndex = 4;
             this.bAccept.Text = "Продолжить";
             this.bAccept.UseVisualStyleBackColor = true;
+            this.bAccept.Click += new System.EventHandler(this.bAccept_Click);
             // 
             // label1
             // 

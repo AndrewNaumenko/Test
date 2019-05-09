@@ -10,25 +10,21 @@ using System.Windows.Forms;
 
 namespace Test
 {
-    public partial class TemplateWrite : Form
+    public partial class TeplateFewChoose : Form
     {
-
         private List<string> questionKeyList;
         private DataBaseConnection db;
         private List<string> request;
         private string rightAnswer;
         private int score;
-       // private ChooseTest ct;
-     //   private int key;
 
-        public TemplateWrite()
+        public TeplateFewChoose()
         {
             InitializeComponent();
-            
             db = new DataBaseConnection();
             request = new List<string>();
             request = db.severalSelectRequest("Select вопрос From Вопрос Where id =" + ChooseTest.keyQuetion + "");
-           // key = Convert.ToInt16(request[0]);
+            // key = Convert.ToInt16(request[0]);
             tbQuestion.Text = request[0];
 
             request = new List<string>();
@@ -42,11 +38,6 @@ namespace Test
 
         private void bAccept_Click(object sender, EventArgs e)
         {
-            if (tbAnswer.Text == rightAnswer)
-            {
-                ChooseTest.result += score;
-            }
-            this.Close();
 
         }
     }

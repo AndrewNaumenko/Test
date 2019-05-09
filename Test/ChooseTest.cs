@@ -12,13 +12,20 @@ namespace Test
 {
     public partial class ChooseTest : Form
     {
-        public string testName;
-        public string name;
-        public string surname;
-        public string fatherName;
-        public int keyQuetion;
-        private int key;
+
+        public static int countRightAnswers;
+        public static int countWrongAnswers;
+        public static int result;
+        public static string testName;
+        public static string name;
+        public static string surname;
+        public static string fatherName;
+        public static int keyQuetion;
+        public static int keyTest;
         private string type;
+        public static int min = 0;
+        public static int sec = 0;
+        Timer timer;
 
         private List<string> questionKeyList;
         private DataBaseConnection db;
@@ -35,7 +42,7 @@ namespace Test
         {
             /*try
             {*/
-            if (tbName.Text == "" || tbSurname.Text == "" || tbFathername.Text == "" || CBchooseTopic.Text == "" || lbTestName.SelectedItem.ToString() == "")
+            if (tbName.Text == "" || tbSurname.Text == "" || tbFathername.Text == "" || CBchooseTopic.Text == "" || lbTestName.SelectedItem.ToString() == null)
                 {
                     MessageBox.Show("Не все поля были заполнены");
                 }
@@ -44,7 +51,7 @@ namespace Test
                     testName = lbTestName.SelectedItem.ToString();
                     request = new List<string>();
                     request = db.severalSelectRequest("Select id From Тест Where название ='" + testName + "'");
-                    key = Convert.ToInt16(request[0]);
+                    keyTest = Convert.ToInt16(request[0]);
 
                     //  db.insertRequest("insert into Пользователь (имя,фамилия,отчество) values ('" + tbCreateTopic.Text + "')");
                    
@@ -56,11 +63,8 @@ namespace Test
 
                     request = new List<string>();
                   //  request = db.severalSelectRequest("Select Вопрос.id From Тест,Вопрос,Вопросы Where Тест.название ='" + testName + "' and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.id");
-                    request = db.severalSelectRequest("Select Вопрос.id From Тест,Вопрос,Вопросы Where Тест.id =" + key + " and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.id");
+                    request = db.severalSelectRequest("Select Вопрос.id From Тест,Вопрос,Вопросы Where Тест.id =" + keyTest + " and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.id");
                    
-                    string i1 = request[0];
-                    string i2 = request[1];
-                    string i3 = request[2];
                     questionKeyList = request;
 
                     for (int i = 0; i < questionKeyList.Count(); i++)
@@ -71,6 +75,11 @@ namespace Test
                         request = new List<string>();
                         request = db.severalSelectRequest("Select тип_вопроса From Тип_вопроса,Вопрос Where вопрос.id =" + keyQuetion + " and Тип_вопроса.id = Вопрос.id_типа_вопроса");
                         type = request[0].ToString();
+
+
+                        timer = new Timer() { Interval = 100 };
+                        timer.Tick += timer_Tick;
+                        timer.Start();
 
                         switch (type)
                         {
@@ -99,6 +108,8 @@ namespace Test
 
                     }
 
+                    timer.Stop();
+
                     Results Res = new Results();
                     Res.Owner = this;
                     Res.ShowDialog();
@@ -126,6 +137,17 @@ namespace Test
             request = db.severalSelectRequest("Select тема From Тема");
             for (int i = 1; i < request.Count(); i++)
             CBchooseTopic.Items.Add(request[i].ToString());
+        }
+
+        void timer_Tick(object sender, EventArgs e)
+        {
+            sec++;
+            if (sec == 60)
+            {
+                sec = 0;
+                min++;
+            }
+            
         }
     }
 }

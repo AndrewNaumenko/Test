@@ -37,6 +37,7 @@ namespace Test
             InitializeComponent();
             db = new DataBaseConnection();
             cbTemplate.SelectedIndex = 0;
+            cbScore.SelectedIndex = 0;
         }
 
         private void cbTemplate_SelectedIndexChanged(object sender, EventArgs e)
@@ -79,7 +80,7 @@ namespace Test
             request = new List<string>();
             request = db.severalSelectRequest("Select id From Тип_вопроса Where тип_вопроса ='" + cbTemplate.Text + "'");
             key = Convert.ToInt16(request[0]);
-            db.insertRequest("insert into Вопрос (вопрос,ответ_правильный,id_типа_вопроса) values ('" + tbQuestion.Text + "','" + tbRightAnswer.Text + "','" + key + "')");
+            db.insertRequest("insert into Вопрос (вопрос,ответ_правильный,id_типа_вопроса,балл) values ('" + tbQuestion.Text + "','" + tbRightAnswer.Text + "','" + key + "','" + cbScore.Text + "')");
             request = new List<string>();
             request = db.severalSelectRequest("Select id From Тест Where название ='" + CreateTest.testName + "'");
             keyTest = Convert.ToInt16(request[0]);
