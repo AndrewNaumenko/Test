@@ -91,8 +91,7 @@
             this.cbTemplate.FormattingEnabled = true;
             this.cbTemplate.Items.AddRange(new object[] {
             "Написать ответ",
-            "Выбрать один из вариантов ответов",
-            "Выбрать один ответ"});
+            "Выбрать один из вариантов ответов"});
             this.cbTemplate.Location = new System.Drawing.Point(222, 22);
             this.cbTemplate.Name = "cbTemplate";
             this.cbTemplate.Size = new System.Drawing.Size(234, 21);

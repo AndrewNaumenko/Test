@@ -40,10 +40,11 @@
             // 
             // tbQuestion
             // 
-            this.tbQuestion.Enabled = false;
+            this.tbQuestion.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.tbQuestion.Location = new System.Drawing.Point(12, 41);
             this.tbQuestion.Multiline = true;
             this.tbQuestion.Name = "tbQuestion";
+            this.tbQuestion.ReadOnly = true;
             this.tbQuestion.Size = new System.Drawing.Size(559, 109);
             this.tbQuestion.TabIndex = 0;
             // 

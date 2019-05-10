@@ -44,7 +44,12 @@ namespace Test
         {
             if (tbAnswer.Text == rightAnswer)
             {
+                ChooseTest.countRightAnswers++;
                 ChooseTest.result += score;
+            }
+            else
+            {
+                ChooseTest.countWrongAnswers++;
             }
             this.Close();
 

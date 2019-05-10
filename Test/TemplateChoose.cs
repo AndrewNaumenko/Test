@@ -37,7 +37,7 @@ namespace Test
             score = Convert.ToInt16(request[0]);
 
             request = new List<string>();
-            request = db.severalSelectRequest("Select неправильный_ответ From Неправильный_ответ,Неправильные_ответы,Вопрос,Вопросы,Тест Where id =" + ChooseTest.keyQuetion + "");
+            request = db.severalSelectRequest("Select DISTINCT неправильный_ответ From Неправильный_ответ,Неправильные_ответы,Вопрос,Вопросы,Тест Where Вопрос.id =" + ChooseTest.keyQuetion + " and Вопрос.id = Неправильные_ответы.id_вопроса and Неправильные_ответы.id_неправильные_ответы = Неправильный_ответ.id");
             request.Add(rightAnswer);
 
 
@@ -96,20 +96,29 @@ namespace Test
         {
             if (radioButton1.Text == rightAnswer && radioButton1.Checked)
             {
+                ChooseTest.countRightAnswers++;
                 ChooseTest.result += score;
             }
-            if (radioButton2.Text == rightAnswer && radioButton1.Checked)
+            else if (radioButton2.Text == rightAnswer && radioButton2.Checked)
             {
+                ChooseTest.countRightAnswers++;
                 ChooseTest.result += score;
             }
-            if (radioButton3.Text == rightAnswer && radioButton1.Checked)
+            else if (radioButton3.Text == rightAnswer && radioButton3.Checked)
             {
+                ChooseTest.countRightAnswers++;
                 ChooseTest.result += score;
             }
-            if (radioButton4.Text == rightAnswer && radioButton1.Checked)
+            else if (radioButton4.Text == rightAnswer && radioButton4.Checked)
             {
+                ChooseTest.countRightAnswers++;
                 ChooseTest.result += score;
             }
+            else
+            {
+                ChooseTest.countWrongAnswers++;
+            }
+
             this.Close();
         }
     }

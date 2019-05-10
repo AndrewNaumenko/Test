@@ -16,3 +16,4 @@ D:\Git\Test\Test\obj\Debug\Test.DataBase.resources
 D:\Git\Test\Test\obj\Debug\Test.Results.resources
 D:\Git\Test\Test\obj\Debug\Test.TemplateChoose.resources
 D:\Git\Test\Test\obj\Debug\Test.TemplateWrite.resources
+D:\Git\Test\Test\obj\Debug\Test.TeplateFewChoose.resources

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbUser = new System.Windows.Forms.RadioButton();
+            this.rbTest = new System.Windows.Forms.RadioButton();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bdelTest = new System.Windows.Forms.Button();
             this.lResulteScores = new System.Windows.Forms.Label();
             this.lResulteWrongAnswers = new System.Windows.Forms.Label();
             this.lResulteRightAnswers = new System.Windows.Forms.Label();
@@ -41,31 +41,36 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.lResultDate = new System.Windows.Forms.Label();
+            this.ldate = new System.Windows.Forms.Label();
+            this.bdelUser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // rbUser
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton1.Location = new System.Drawing.Point(12, 12);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(150, 27);
-            this.radioButton1.TabIndex = 21;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Пользователи";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbUser.AutoSize = true;
+            this.rbUser.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbUser.Location = new System.Drawing.Point(12, 12);
+            this.rbUser.Name = "rbUser";
+            this.rbUser.Size = new System.Drawing.Size(150, 27);
+            this.rbUser.TabIndex = 21;
+            this.rbUser.TabStop = true;
+            this.rbUser.Text = "Пользователи";
+            this.rbUser.UseVisualStyleBackColor = true;
+            this.rbUser.CheckedChanged += new System.EventHandler(this.rbUser_CheckedChanged);
             // 
-            // radioButton2
+            // rbTest
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.radioButton2.Location = new System.Drawing.Point(12, 45);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(81, 27);
-            this.radioButton2.TabIndex = 22;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Тесты";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbTest.AutoSize = true;
+            this.rbTest.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.rbTest.Location = new System.Drawing.Point(12, 45);
+            this.rbTest.Name = "rbTest";
+            this.rbTest.Size = new System.Drawing.Size(81, 27);
+            this.rbTest.TabIndex = 22;
+            this.rbTest.TabStop = true;
+            this.rbTest.Text = "Тесты";
+            this.rbTest.UseVisualStyleBackColor = true;
+            this.rbTest.CheckedChanged += new System.EventHandler(this.rbTest_CheckedChanged);
             // 
             // listBox1
             // 
@@ -74,16 +79,18 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(214, 381);
             this.listBox1.TabIndex = 23;
+            this.listBox1.SelectedValueChanged += new System.EventHandler(this.listBox1_SelectedValueChanged);
             // 
-            // button1
+            // bdelTest
             // 
-            this.button1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(336, 388);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 54);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Удалить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bdelTest.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bdelTest.Location = new System.Drawing.Point(236, 403);
+            this.bdelTest.Name = "bdelTest";
+            this.bdelTest.Size = new System.Drawing.Size(150, 54);
+            this.bdelTest.TabIndex = 25;
+            this.bdelTest.Text = "Удалить тест";
+            this.bdelTest.UseVisualStyleBackColor = true;
+            this.bdelTest.Click += new System.EventHandler(this.bdelTest_Click);
             // 
             // lResulteScores
             // 
@@ -168,12 +175,46 @@
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(333, 160);
             this.listBox2.TabIndex = 34;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
+            // 
+            // lResultDate
+            // 
+            this.lResultDate.AutoSize = true;
+            this.lResultDate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lResultDate.Location = new System.Drawing.Point(447, 377);
+            this.lResultDate.Name = "lResultDate";
+            this.lResultDate.Size = new System.Drawing.Size(0, 19);
+            this.lResultDate.TabIndex = 36;
+            // 
+            // ldate
+            // 
+            this.ldate.AutoSize = true;
+            this.ldate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ldate.Location = new System.Drawing.Point(232, 377);
+            this.ldate.Name = "ldate";
+            this.ldate.Size = new System.Drawing.Size(177, 19);
+            this.ldate.TabIndex = 35;
+            this.ldate.Text = "Дата прохождения теста:";
+            // 
+            // bdelUser
+            // 
+            this.bdelUser.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bdelUser.Location = new System.Drawing.Point(416, 405);
+            this.bdelUser.Name = "bdelUser";
+            this.bdelUser.Size = new System.Drawing.Size(153, 54);
+            this.bdelUser.TabIndex = 37;
+            this.bdelUser.Text = "Удалить пользователя";
+            this.bdelUser.UseVisualStyleBackColor = true;
+            this.bdelUser.Click += new System.EventHandler(this.bdelUser_Click);
             // 
             // DataBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(581, 469);
+            this.Controls.Add(this.bdelUser);
+            this.Controls.Add(this.lResultDate);
+            this.Controls.Add(this.ldate);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.lResulteScores);
             this.Controls.Add(this.lResulteWrongAnswers);
@@ -183,10 +224,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bdelTest);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.rbTest);
+            this.Controls.Add(this.rbUser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DataBase";
             this.Text = "База данных";
@@ -197,10 +238,10 @@
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbUser;
+        private System.Windows.Forms.RadioButton rbTest;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bdelTest;
         private System.Windows.Forms.Label lResulteScores;
         private System.Windows.Forms.Label lResulteWrongAnswers;
         private System.Windows.Forms.Label lResulteRightAnswers;
@@ -210,5 +251,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label lResultDate;
+        private System.Windows.Forms.Label ldate;
+        private System.Windows.Forms.Button bdelUser;
     }
 }

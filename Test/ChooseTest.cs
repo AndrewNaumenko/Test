@@ -57,7 +57,7 @@ namespace Test
                    
                     name = tbName.Text;
                     surname = tbSurname.Text;
-                    fatherName = tbSurname.Text;
+                    fatherName = tbFathername.Text;
 
 
 
@@ -77,7 +77,7 @@ namespace Test
                         type = request[0].ToString();
 
 
-                        timer = new Timer() { Interval = 100 };
+                        timer = new Timer() { Interval = 1000 };
                         timer.Tick += timer_Tick;
                         timer.Start();
 
@@ -97,13 +97,13 @@ namespace Test
                                     TChoose.ShowDialog();
                                     break;
                                 }
-                            case "Выбрать один ответ":
+                           /* case "Выбрать один ответ":
                                 {
                                     TemplateChoose TChoose = new TemplateChoose();
                                     TChoose.Owner = this;
                                     TChoose.ShowDialog();
                                     break;
-                                }
+                                }*/
                         }
 
                     }

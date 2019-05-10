@@ -34,15 +34,15 @@ namespace Test
             request = db.severalSelectRequest("Select MAX(id) From Результат");
             keyResult = Convert.ToInt16(request[0]);
 
-            db.insertRequest("insert into Пользователь (имя,фамилия,отчество,id_результат) values ('" + ChooseTest.name + "','" + ChooseTest.surname + "','" + ChooseTest.fatherName + "','" + keyResult + "','" + DateTime.Now.ToLongDateString() + "')");
+            db.insertRequest("insert into Пользователь (имя,фамилия,отчество) values ('" + ChooseTest.name + "','" + ChooseTest.surname + "','" + ChooseTest.fatherName + "')");
 
             request = new List<string>();
-            request = db.severalSelectRequest("Select MAX(id) From Результат");
+            request = db.severalSelectRequest("Select MAX(id) From Пользователь");
             keyUser = Convert.ToInt16(request[0]);
 
-            db.insertRequest("insert into Результаты (id_результата,id_пользователя) values (" + keyResult + "," + keyUser  + "");
+            db.insertRequest("insert into Результаты (id_результата,id_пользователя) values ('" + keyResult + "','" + keyUser  + "')");
 
-            db.insertRequest("insert into Пользователя (id_теста,id_пользователя) values (" + ChooseTest.keyTest + "," + keyUser + "");
+            db.insertRequest("insert into Пользователи (id_теста,id_пользователя) values ('" + ChooseTest.keyTest + "','" + keyUser + "')");
 
         }
 
