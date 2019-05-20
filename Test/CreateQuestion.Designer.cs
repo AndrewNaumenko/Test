@@ -42,6 +42,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.cbScore = new System.Windows.Forms.ComboBox();
             this.lScore = new System.Windows.Forms.Label();
+            this.bSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bCreateQuestion
@@ -185,11 +186,23 @@
             this.lScore.TabIndex = 25;
             this.lScore.Text = "Баллов за правильный ответ";
             // 
+            // bSave
+            // 
+            this.bSave.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bSave.Location = new System.Drawing.Point(120, 386);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(230, 48);
+            this.bSave.TabIndex = 27;
+            this.bSave.Text = "Сохранить изменения";
+            this.bSave.UseVisualStyleBackColor = true;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            // 
             // CreateQuestion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 484);
+            this.ClientSize = new System.Drawing.Size(484, 446);
+            this.Controls.Add(this.bSave);
             this.Controls.Add(this.cbScore);
             this.Controls.Add(this.lScore);
             this.Controls.Add(this.button1);
@@ -228,6 +241,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox cbScore;
         private System.Windows.Forms.Label lScore;
+        private System.Windows.Forms.Button bSave;
 
     }
 }

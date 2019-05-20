@@ -1,17 +1,4 @@
-﻿/*using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.OleDb;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;*/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,10 +13,10 @@ namespace Test
     public partial class Form1 : Form
     {
         public static bool admin = false;
-        ToolStripLabel dateLabel;
-        ToolStripLabel timeLabel;
-        ToolStripLabel infoLabel;
-        Timer timer;
+        private ToolStripLabel dateLabel;
+        private ToolStripLabel timeLabel;
+        private ToolStripLabel infoLabel;
+        private Timer timer;
 
         public Form1()
         {
@@ -69,9 +56,16 @@ namespace Test
 
         private void butDB_Click(object sender, EventArgs e)
         {
-            DataBase DB = new DataBase();
-            DB.Owner = this;
-            DB.ShowDialog();
+            if (labAdminUser.Text == "Вы вошли как: Пользователь")
+            {
+                MessageBox.Show("Авторизируйтесь");
+            }
+            else
+            {
+                DataBase DB = new DataBase();
+                DB.Owner = this;
+                DB.ShowDialog();
+            }
         }
 
         private void labAdminUser_Click(object sender, EventArgs e)
@@ -87,7 +81,7 @@ namespace Test
             {
                 lQuitAdmin.Visible = false;
             }
-            else 
+            else
             {
                 lQuitAdmin.Visible = true;
             }
@@ -103,7 +97,7 @@ namespace Test
 
             dateLabel.Text = DateTime.Now.ToLongDateString();
             timeLabel.Text = DateTime.Now.ToLongTimeString();
-            
+
             if (admin == true)
             {
                 labAdminUser.Text = "Вы вошли как: Администратор";
@@ -113,6 +107,5 @@ namespace Test
                 labAdminUser.Text = "Вы вошли как: Пользователь";
             }
         }
-
     }
 }

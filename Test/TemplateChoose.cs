@@ -12,7 +12,6 @@ namespace Test
 {
     public partial class TemplateChoose : Form
     {
-        private List<string> questionKeyList;
         private DataBaseConnection db;
         private List<string> request;
         private string rightAnswer;
@@ -21,26 +20,13 @@ namespace Test
         public TemplateChoose()
         {
             InitializeComponent();
-
             db = new DataBaseConnection();
-            request = new List<string>();
-            request = db.severalSelectRequest("Select вопрос From Вопрос Where id =" + ChooseTest.keyQuetion + "");
-            // key = Convert.ToInt16(request[0]);
-            tbQuestion.Text = request[0];
-
-            request = new List<string>();
-            request = db.severalSelectRequest("Select ответ_правильный From Вопрос Where id =" + ChooseTest.keyQuetion + "");
-            rightAnswer = request[0];
-
-            request = new List<string>();
-            request = db.severalSelectRequest("Select балл From Вопрос Where id =" + ChooseTest.keyQuetion + "");
-            score = Convert.ToInt16(request[0]);
-
+            tbQuestion.Text = db.returnValue("Select вопрос From Вопрос Where id =" + ChooseTest.keyQuetion + "");
+            rightAnswer = db.returnValue("Select ответ_правильный From Вопрос Where id =" + ChooseTest.keyQuetion + "");
+            score = Convert.ToInt16(db.returnValue("Select балл From Вопрос Where id =" + ChooseTest.keyQuetion + ""));
             request = new List<string>();
             request = db.severalSelectRequest("Select DISTINCT неправильный_ответ From Неправильный_ответ,Неправильные_ответы,Вопрос,Вопросы,Тест Where Вопрос.id =" + ChooseTest.keyQuetion + " and Вопрос.id = Неправильные_ответы.id_вопроса and Неправильные_ответы.id_неправильные_ответы = Неправильный_ответ.id");
             request.Add(rightAnswer);
-
-
             Random rnd = new Random();
             List<int> rndnum = new List<int>();
             int r = rnd.Next(1, 5);

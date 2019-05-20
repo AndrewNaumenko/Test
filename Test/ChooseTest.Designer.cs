@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.bCreate = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
             this.lCchooseTopic = new System.Windows.Forms.Label();
@@ -39,6 +40,7 @@
             this.tbSurname = new System.Windows.Forms.TextBox();
             this.tbFathername = new System.Windows.Forms.TextBox();
             this.lbTestName = new System.Windows.Forms.ListBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // bCreate
@@ -178,5 +180,6 @@
         private System.Windows.Forms.TextBox tbSurname;
         private System.Windows.Forms.TextBox tbFathername;
         private System.Windows.Forms.ListBox lbTestName;
+        private System.Windows.Forms.Timer timer1;
     }
 }

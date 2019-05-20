@@ -12,7 +12,6 @@ namespace Test
 {
     public partial class ChooseTest : Form
     {
-
         public static int countRightAnswers;
         public static int countWrongAnswers;
         public static int result;
@@ -25,11 +24,11 @@ namespace Test
         private string type;
         public static int min = 0;
         public static int sec = 0;
-        Timer timer;
-
+        private Timer timer;
         private List<string> questionKeyList;
         private DataBaseConnection db;
         private List<string> request;
+        public static DateTime date1 = new DateTime(0, 0);
 
         public ChooseTest()
         {
@@ -42,45 +41,27 @@ namespace Test
         {
             /*try
             {*/
-            if (tbName.Text == "" || tbSurname.Text == "" || tbFathername.Text == "" || CBchooseTopic.Text == "" || lbTestName.SelectedItem.ToString() == null)
+                if (tbName.Text == "" || tbSurname.Text == "" || tbFathername.Text == "" || CBchooseTopic.Text == "" || lbTestName.SelectedItem.ToString() == null)
                 {
                     MessageBox.Show("Не все поля были заполнены");
                 }
                 else
                 {
                     testName = lbTestName.SelectedItem.ToString();
-                    request = new List<string>();
-                    request = db.severalSelectRequest("Select id From Тест Where название ='" + testName + "'");
-                    keyTest = Convert.ToInt16(request[0]);
-
-                    //  db.insertRequest("insert into Пользователь (имя,фамилия,отчество) values ('" + tbCreateTopic.Text + "')");
-                   
+                    keyTest = Convert.ToInt16(db.returnValue("Select id From Тест Where название ='" + testName + "'"));
                     name = tbName.Text;
                     surname = tbSurname.Text;
                     fatherName = tbFathername.Text;
-
-
-
-                    request = new List<string>();
-                  //  request = db.severalSelectRequest("Select Вопрос.id From Тест,Вопрос,Вопросы Where Тест.название ='" + testName + "' and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.id");
-                    request = db.severalSelectRequest("Select Вопрос.id From Тест,Вопрос,Вопросы Where Тест.id =" + keyTest + " and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.id");
-                   
-                    questionKeyList = request;
+                    questionKeyList = db.severalSelectRequest("Select Вопрос.id From Тест,Вопрос,Вопросы Where Тест.id =" + keyTest + " and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.id");
 
                     for (int i = 0; i < questionKeyList.Count(); i++)
                     {
-                        // keyQuetion = Convert.ToInt16(questionKeyList[0]);
                         keyQuetion = Convert.ToInt16(questionKeyList[i]);
-
-                        request = new List<string>();
-                        request = db.severalSelectRequest("Select тип_вопроса From Тип_вопроса,Вопрос Where вопрос.id =" + keyQuetion + " and Тип_вопроса.id = Вопрос.id_типа_вопроса");
-                        type = request[0].ToString();
-
-
+                        type = db.returnValue("Select тип_вопроса From Тип_вопроса,Вопрос Where вопрос.id =" + keyQuetion + " and Тип_вопроса.id = Вопрос.id_типа_вопроса");
                         timer = new Timer() { Interval = 1000 };
-                        timer.Tick += timer_Tick;
+                        timer.Tick += timer1_Tick;
                         timer.Start();
-
+                        timer1.Enabled = true;
                         switch (type)
                         {
                             case "Написать ответ":
@@ -97,57 +78,58 @@ namespace Test
                                     TChoose.ShowDialog();
                                     break;
                                 }
-                           /* case "Выбрать один ответ":
-                                {
-                                    TemplateChoose TChoose = new TemplateChoose();
-                                    TChoose.Owner = this;
-                                    TChoose.ShowDialog();
-                                    break;
-                                }*/
                         }
 
                     }
-
                     timer.Stop();
-
+                    timer1.Enabled = false;
                     Results Res = new Results();
                     Res.Owner = this;
                     Res.ShowDialog();
                 }
 
-            /* }
-             catch
-             {
-                 MessageBox.Show("Не все поля были заполнены");
-             }*/
+           /* }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }*/
         }
 
         private void CBchooseTopic_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbTestName.Items.Clear();
-            request = new List<string>();
-            request = db.severalSelectRequest("Select название From Тест,Тема Where тема='" + CBchooseTopic.Text + "'and  Тест.id_тема=Тема.id");
-            for (int i = 0; i < request.Count(); i++)
-            lbTestName.Items.Add(request[i].ToString());
+            try
+            {
+                lbTestName.Items.Clear();
+                request = new List<string>();
+                request = db.severalSelectRequest("Select название From Тест,Тема Where тема='" + CBchooseTopic.Text + "'and  Тест.id_тема=Тема.id");
+                for (int i = 0; i < request.Count(); i++)
+                    lbTestName.Items.Add(request[i].ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
         }
 
         private void GetFromBDTopic()
         {
-            request = new List<string>();
-            request = db.severalSelectRequest("Select тема From Тема");
-            for (int i = 1; i < request.Count(); i++)
-            CBchooseTopic.Items.Add(request[i].ToString());
+            try
+            {
+                request = new List<string>();
+                request = db.severalSelectRequest("Select тема From Тема");
+                for (int i = 1; i < request.Count(); i++)
+                    CBchooseTopic.Items.Add(request[i].ToString());
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
         }
 
-        void timer_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            sec++;
-            if (sec == 60)
-            {
-                sec = 0;
-                min++;
-            }
-            
+            date1 = date1.AddSeconds(1);
         }
+ 
     }
 }

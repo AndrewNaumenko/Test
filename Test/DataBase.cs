@@ -15,12 +15,37 @@ namespace Test
         private DataBaseConnection db;
         private List<string> request;
         private List<List<string>> request2;
-        //private List<string> user;
         private string text;
-        private string [] user;
+        private string[] user;
         private string testName;
         private int keyUser;
-        private int key;
+        public static int keyTest;
+        private List<string> keyQuestion;
+        private List<string> keyWrongQuestion;
+        private List<string> keyListUser;
+        private List<string> keyResults;
+
+
+        private List<string> questionKeyList;
+        public static int keyQuetion;
+        private string type;
+        /* public static int countRightAnswers;
+      public static int countWrongAnswers;
+      public static int result;
+      public static string testName;
+      public static string name;
+      public static string surname;
+      public static string fatherName;
+      public static int keyQuetion;
+      public static int keyTest;
+      private string type;
+      public static int min = 0;
+      public static int sec = 0;
+      private Timer timer;
+      private List<string> questionKeyList;
+      private DataBaseConnection db;
+      private List<string> request;
+      public static DateTime date1 = new DateTime(0, 0);*/
 
         public DataBase()
         {
@@ -30,184 +55,257 @@ namespace Test
 
         private void rbUser_CheckedChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            listBox2.Items.Clear();
-            request2 = new List<List<string>>();
-            request2 = db.severalListSelectRequest("Select имя,фамилия,отчество From Пользователь");
-            for (int i = 0; i < request2.Count; i++)
-            {
-                text = request2[i][0] + ' ' + request2[i][1] + ' ' + request2[i][2];
-                listBox1.Items.Add(text);
-            }
-
+            usercb();
         }
 
         private void rbTest_CheckedChanged(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            listBox2.Items.Clear();
-            request = new List<string>();
-            request = db.severalSelectRequest("Select название From Тест");
-            for (int i = 0; i < request.Count; i++)
-            listBox1.Items.Add(request[i]);
+            testcb();
+        }
+
+        private void usercb()
+        {
+            try
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                request2 = new List<List<string>>();
+                request2 = db.severalListSelectRequest("Select имя,фамилия,отчество From Пользователь");
+                for (int i = 0; i < request2.Count; i++)
+                {
+                    text = request2[i][0] + ' ' + request2[i][1] + ' ' + request2[i][2];
+                    listBox1.Items.Add(text);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Не найдено");
+            }
+        }
+
+        private void testcb()
+        {
+            try
+            {
+                listBox1.Items.Clear();
+                listBox2.Items.Clear();
+                request = new List<string>();
+                request = db.severalSelectRequest("Select название From Тест");
+                for (int i = 0; i < request.Count; i++)
+                    listBox1.Items.Add(request[i]);
+            }
+            catch
+            {
+                MessageBox.Show("Не найдено");
+            }
         }
 
         private void listBox1_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (rbUser.Checked)
+            try
             {
-                listBox2.Items.Clear();
-
-                request = new List<string>();
-               // request = db.severalSelectRequest("Select количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест");
-              // text = listBox1.SelectedItem.ToString();
-               user = listBox1.SelectedItem.ToString().Split(new char[] { ' ' });
-
-                request = db.severalSelectRequest("Select название From Тест,Пользователь,Пользователи Where имя = '" + user[0] + "' and фамилия= '" + user [1] + "' and  отчество= '" + user [2] + "' and Пользователь.id = Пользователи.id_пользователя and id_теста = Тест.id");
-                for (int i = 0; i < request.Count; i++)
-                    listBox2.Items.Add(request[i]);
-
-            }
-            if (rbTest.Checked)
-            {
-                listBox2.Items.Clear();
-
-                request2 = new List<List<string>>();
-               // request = new List<string>();
-               // request = db.severalSelectRequest("Select имя,фамилия,отчество From Пользователи,Пользователь,Тест Where Пользователь.id = Пользователи.id_пользователя and Пользователи id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
-
-                request2 = db.severalListSelectRequest("Select имя,фамилия,отчество From Пользователи,Пользователь,Тест Where Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
-                for (int i = 0; i < request2.Count; i++)
+                if (rbUser.Checked)
                 {
-                    text = request2[i][0] + ' ' + request2[i][1] + ' ' + request2[i][2];
-                    listBox2.Items.Add(text);
+                    listBox2.Items.Clear();
+                    request = new List<string>();
+                    user = listBox1.SelectedItem.ToString().Split(new char[] { ' ' });
+                    request = db.severalSelectRequest("Select название From Тест,Пользователь,Пользователи Where имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Пользователь.id = Пользователи.id_пользователя and id_теста = Тест.id");
+                    for (int i = 0; i < request.Count; i++)
+                        listBox2.Items.Add(request[i]);
                 }
-               // for (int i = 0; i < request.Count; i++)
-                //    listBox2.Items.Add(request[i]);
+                if (rbTest.Checked)
+                {
+                    listBox2.Items.Clear();
+                    request2 = new List<List<string>>();
+                    request2 = db.severalListSelectRequest("Select имя,фамилия,отчество From Пользователи,Пользователь,Тест Where Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
+                    for (int i = 0; i < request2.Count; i++)
+                    {
+                        text = request2[i][0] + ' ' + request2[i][1] + ' ' + request2[i][2];
+                        listBox2.Items.Add(text);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Не найдено");
             }
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            request = new List<string>();
-            if (rbTest.Checked)
+            try
             {
-               // user = listBox2.SelectedItem.ToString().Split(new char[] { ' ' });
-                testName = listBox1.SelectedItem.ToString();
+                request = new List<string>();
+                if (rbTest.Checked)
+                {
+                    testName = listBox1.SelectedItem.ToString();
+                    user = listBox2.SelectedItem.ToString().Split(new char[] { ' ' });
+                }
 
-               /* request = new List<string>();
-                request = db.severalSelectRequest("Select имя,фамилия,отчество From Пользователи,Пользователь,Тест Where Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
-                for (int i = 0; i < request.Count; i++)
-                    listBox2.Items.Add(request[i]);*/
-                user = listBox2.SelectedItem.ToString().Split(new char[] { ' ' });
-
-               /* request = new List<string>();
-                request = db.severalSelectRequest("Select имя,фамилия,отчество From Пользователи Where Пользователь.id = Пользователи.id_пользователя and Пользователи id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
-                for (int i = 0; i < request.Count; i++)
-                    listBox2.Items.Add(request[i]);*/
-            }
-
-            if (rbUser.Checked)
-            {
-              //  user = listBox1.SelectedItem.ToString().Split(new char[] { ' ' });
-                testName = listBox2.SelectedItem.ToString();
-
-                /*request = new List<string>();
-                request = db.severalSelectRequest("Select имя,фамилия,отчество From Пользователи,Пользователь,Тест Where Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
-                for (int i = 0; i < request.Count; i++)
-                    listBox2.Items.Add(request[i]);*/
-                user = listBox1.SelectedItem.ToString().Split(new char[] { ' ' });
-            }
-
-
-           /* request = new List<string>();
-            request = db.severalSelectRequest("Select имя,фамилия,отчество From Пользователи Where Пользователь.id = Пользователи.id_пользователя and Пользователи id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
-            for (int i = 0; i < request.Count; i++)
-                listBox2.Items.Add(request[i]);*/
-
-               // request = new List<string>();
-                // request = db.severalSelectRequest("Select количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест");
-                // text = listBox1.SelectedItem.ToString();
-             //   user = listBox1.SelectedItem.ToString().Split(new char[] { ' ' });
-
-
-
-
-               // не работает request = db.severalSelectRequest("Select количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест,Пользователь,Пользователи,Результаты,Результат Where Тест.название = '" + listBox2.SelectedItem.ToString() + "' and Тест.id = Пользователи.id_теста and Пользователи.id_пользователя = Пользователь.id and  имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Пользователь.id_результат = Результаты.id_результата and Результаты.id_пользователя = Результат.id");
-             //   request = db.severalSelectRequest("Select DISTINCT количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест,Пользователь,Пользователи,Результаты,Результат Where   имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id");
-            ////////tyutj
-
+                if (rbUser.Checked)
+                {
+                    testName = listBox2.SelectedItem.ToString();
+                    user = listBox1.SelectedItem.ToString().Split(new char[] { ' ' });
+                }
                 request2 = new List<List<string>>();
-               // request2 = db.severalListSelectRequest("Select имя,фамилия,отчество From Пользователь");
-                if (rbTest.Checked) request2 = db.severalListSelectRequest2("Select DISTINCT количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест,Пользователь,Пользователи,Результаты,Результат Where   имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id and Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
-                if (rbUser.Checked) request2 = db.severalListSelectRequest2("Select DISTINCT количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест,Пользователь,Пользователи,Результаты,Результат Where   имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id and Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox2.SelectedItem.ToString() + "'");
-
-          //  for (int i = 0; i < request.Count; i++)
-                   // listBox2.Items.Add(request[i]);
+                if (rbTest.Checked)
+                    request2 = db.severalListSelectRequest2("Select DISTINCT количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест,Пользователь,Пользователи,Результаты,Результат Where   имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id and Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
+                if (rbUser.Checked)
+                    request2 = db.severalListSelectRequest2("Select DISTINCT количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест,Пользователь,Пользователи,Результаты,Результат Where   имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id and Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox2.SelectedItem.ToString() + "'");
                 lResulteRightAnswers.Text = request2[0][0];
                 lResulteScores.Text = request2[0][1];
                 lResulteTime.Text = request2[0][2];
                 lResulteWrongAnswers.Text = request2[0][3];
                 lResultDate.Text = request2[0][4];
-
+            }
+            catch
+            {
+                MessageBox.Show("Не найдено");
+            }
         }
 
-        
         private void bdelTest_Click(object sender, EventArgs e)
         {
-           /* if (rbTest.Checked)
+            try
             {
-                request = new List<string>();
-                request = db.severalSelectRequest("Select Пользователь.id From Пользователь Where имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "'");
-                keyUser = Convert.ToInt16(request[0]);
+                if (rbTest.Checked)
+                {
+                    testName = listBox1.SelectedItem.ToString();
+                }
+                if (rbUser.Checked)
+                {
+                    testName = listBox2.SelectedItem.ToString();
+                }
+                keyTest = Convert.ToInt16(db.returnValue("Select id From Тест Where название = '" + testName + "'"));
+                keyQuestion = db.severalSelectRequest("Select Вопрос.id From Тест,Вопрос,Вопросы Where Тест.id = " + keyTest + " and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос=Вопрос.id");
+                for (int i = 0; i < keyQuestion.Count; i++)
+                {
+                    keyWrongQuestion = db.severalSelectRequest("Select DISTINCT Неправильный_ответ.id From Неправильный_ответ,Неправильные_ответы,Вопрос Where Неправильные_ответы.id_вопроса = " + keyQuestion[i] + " and  Неправильные_ответы.id_неправильные_ответы = Неправильный_ответ.id");
+                    for (int j = 0; j < keyWrongQuestion.Count(); j++)
+                    {
+                        db.Request("delete from Неправильный_ответ Where id = " + keyWrongQuestion[j] + "");
+                        db.Request("delete from Неправильные_ответы Where id_неправильные_ответы = " + keyWrongQuestion[j] + "");
+                    }
+                }
 
-                db.DeleteRequest("delete from Пользователь Where id='" + keyUser + "'");
+                for (int j = 0; j < keyQuestion.Count(); j++)
+                {
+                    db.Request("delete from Вопрос Where id = " + keyQuestion[j] + "");
+                    db.Request("delete from Вопросы Where id_вопрос = " + keyQuestion[j] + "");
+                }
+                keyListUser = db.severalSelectRequest("Select Пользователи.id_пользователя From Тест,Пользователи Where Тест.id = " + keyTest + " and Тест.id = Пользователи.id_теста");
+
+                for (int i = 0; i < keyListUser.Count(); i++)
+                {
+                    request = new List<string>();
+                    request = db.severalSelectRequest("Select Результат.id From Результат,Результаты Where Результаты.id_пользователя = " + keyListUser[i] + " and Результаты.id_результата = Результат.id");
+                    keyResults = request;
+
+                    for (int j = 0; j < keyResults.Count(); j++)
+                    {
+                        db.Request("delete from Результат Where id = " + keyResults[j] + "");
+                        db.Request("delete from Результаты Where id_результата = " + keyResults[j] + "");
+                    }
+                }
+
+                for (int j = 0; j < keyListUser.Count(); j++)
+                {
+                    db.Request("delete from Пользователи Where id_пользователя = " + keyListUser[j] + " and id_теста = " + keyTest + "");
+                }
+                db.Request("delete from Тест Where id = " + keyTest + "");
+
+                updatelist();
+
             }
+            catch
+            {
+                MessageBox.Show("Не найдено");
+            }
+        }
 
+        private void updatelist()
+        {
+            listBox1.Items.Clear();
+            listBox2.Items.Clear();
+
+            if (rbTest.Checked)
+            {
+                testcb();
+            }
             if (rbUser.Checked)
             {
-
-            }*/
-
+                usercb();
+            }
         }
 
         private void bdelUser_Click(object sender, EventArgs e)
         {
-          //  if (rbTest.Checked)
-           // {
-                request = new List<string>();
-                request = db.severalSelectRequest("Select Пользователь.id From Пользователь Where имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "'");
-                keyUser = Convert.ToInt16(request[0]);
+            try
+            {
+                keyUser = Convert.ToInt16(db.returnValue("Select Пользователь.id From Пользователь Where имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "'"));
+                keyResults = db.severalSelectRequest("Select Результат.id From Пользователь,Результат,Результаты,Пользователи Where  Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id and Пользователь.id=" + keyUser + "");
 
-               // keyUser = 1;
-               // db.DeleteRequest("delete from Результат Where Результат.id = " + keyUser + "");
-               
-            // db.DeleteRequest("delete from Результат Where Результат.id = Результаты.id_результата and Результаты.id_пользователя=" + keyUser + "");
-               
+                for (int j = 0; j < keyResults.Count(); j++)
+                {
+                    db.Request("delete from Результат Where id = " + keyResults[j] + "");
+                    db.Request("delete from Результаты Where id_результата = " + keyResults[j] + "");
+                }
+                db.Request("delete from Пользователь Where Пользователь.id=" + keyUser + "");
+                db.Request("delete from Пользователи Where Пользователи.id_пользователя=" + keyUser + "");
 
-               // db.DeleteRequest("delete from Пользователь Where id='" + keyUser + "'");
+                updatelist();
 
+            }
+            catch
+            {
+                MessageBox.Show("Не найдено");
+            }
 
-            request = new List<string>();
-            request = db.severalSelectRequest("Select Результат.id From Пользователь,Результат,Результаты,Пользователи Where  Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id and Пользователь.id=" + keyUser + "");
-            key = Convert.ToInt16(request[0]);
-
-            db.DeleteRequest("delete from Результат Where Результат.id = " + key + "");
-
-
-
-                db.DeleteRequest("delete from Результаты Where Результаты.id_результата=" + key + "");
-
-                db.DeleteRequest("delete from Пользователь Where Пользователь.id=" + keyUser + "");
-
-                db.DeleteRequest("delete from Пользователи Where Пользователи.id_пользователя=" + keyUser + "");
-
-           // }
-
-           // if (rbUser.Checked)
-           // {
-
-           // }
         }
+
+        private void bEditTest_Click(object sender, EventArgs e)
+        {
+            /*try
+            {*/
+                if (rbTest.Checked)
+                {
+                    testName = listBox1.SelectedItem.ToString();
+                }
+                if (rbUser.Checked)
+                {
+                    testName = listBox2.SelectedItem.ToString();
+                }
+                keyTest = Convert.ToInt16(db.returnValue("Select id From Тест Where название = '" + testName + "'"));
+                questionKeyList = db.severalSelectRequest("Select Вопрос.id From Тест,Вопрос,Вопросы Where Тест.id =" + DataBase.keyTest + " and Тест.id = Вопросы.id_тест and Вопросы.id_вопрос = Вопрос.id");
+                for (int i = 0; i < questionKeyList.Count(); i++)
+                {
+                    keyQuetion = Convert.ToInt16(questionKeyList[i]);
+                    type = db.returnValue("Select тип_вопроса From Тип_вопроса,Вопрос Where вопрос.id =" + keyQuetion + " and Тип_вопроса.id = Вопрос.id_типа_вопроса");
+                    switch (type)
+                    {
+                        case "Написать ответ":
+                            {
+                                CreateQuestion CQuestion = new CreateQuestion(true, "Написать ответ");
+                                CQuestion.Owner = this;
+                                CQuestion.ShowDialog();
+                                break;
+                            }
+                        case "Выбрать один из вариантов ответов":
+                            {
+                                CreateQuestion CQuestion = new CreateQuestion(true, "Выбрать один из вариантов ответов");
+                                CQuestion.Owner = this;
+                                CQuestion.ShowDialog();
+                                break;
+                            }
+                    }
+                }
+          /*  }
+            catch
+            {
+                MessageBox.Show("Не найдено");
+            }*/
+        }
+
     }
+
 }

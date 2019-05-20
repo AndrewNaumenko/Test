@@ -26,18 +26,7 @@ namespace Test
             connection = new OleDbConnection(connectionString);
         }
 
-       /* public string selectRequest(string cmd)
-        {
-            connection.Open();
-            command = new OleDbCommand(cmd, connection);
-            reader = command.ExecuteReader();
-            reader.Read();
-            string request = reader[0].ToString();
-            connection.Close();
-            return request;
-        }*/
-
-        public void DeleteRequest(string cmd)
+        public void Request(string cmd)
         {
             connection.Open();
             command = new OleDbCommand(cmd, connection);
@@ -59,32 +48,18 @@ namespace Test
             return request;
         }
 
-        public void insertRequest(string cmd)
-        {
-            connection.Open();
-            command = new OleDbCommand(cmd, connection);
-            command.ExecuteNonQuery();
-            connection.Close();
-        }
-
         public List<List<string>> severalListSelectRequest(string cmd)
         {
             connection.Open();
             command = new OleDbCommand(cmd, connection);
             reader = command.ExecuteReader();
             List<List<string>> request = new List<List<string>>();
-           // int i = 0;
-           // while (reader.Read())
             for (int i = 0; reader.Read(); i++)
             {
                 request.Add(new List<string>());
-              //  string t = reader[0].ToString();
-               // string t2 = reader[1].ToString();
                 request[i].Add(reader[0].ToString());
                 request[i].Add(reader[1].ToString());
                 request[i].Add(reader[2].ToString());
-                // i++;
-
             }
             connection.Close();
             return request;
@@ -96,23 +71,28 @@ namespace Test
             command = new OleDbCommand(cmd, connection);
             reader = command.ExecuteReader();
             List<List<string>> request = new List<List<string>>();
-            // int i = 0;
-            // while (reader.Read())
             for (int i = 0; reader.Read(); i++)
             {
                 request.Add(new List<string>());
-                //  string t = reader[0].ToString();
-                // string t2 = reader[1].ToString();
                 request[i].Add(reader[0].ToString());
                 request[i].Add(reader[1].ToString());
                 request[i].Add(reader[2].ToString());
                 request[i].Add(reader[3].ToString());
                 request[i].Add(reader[4].ToString());
-                // i++;
-
             }
             connection.Close();
             return request;
+        }
+
+        public string returnValue(string cmd)
+        {
+            connection.Open();
+            command = new OleDbCommand(cmd, connection);
+            reader = command.ExecuteReader();
+            reader.Read();
+            string value = reader[0].ToString();
+            connection.Close();
+            return value;
         }
     }
 }

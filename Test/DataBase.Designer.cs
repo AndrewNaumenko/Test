@@ -44,6 +44,7 @@
             this.lResultDate = new System.Windows.Forms.Label();
             this.ldate = new System.Windows.Forms.Label();
             this.bdelUser = new System.Windows.Forms.Button();
+            this.bEditTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // rbUser
@@ -77,7 +78,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 78);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(214, 381);
+            this.listBox1.Size = new System.Drawing.Size(214, 433);
             this.listBox1.TabIndex = 23;
             this.listBox1.SelectedValueChanged += new System.EventHandler(this.listBox1_SelectedValueChanged);
             // 
@@ -207,11 +208,23 @@
             this.bdelUser.UseVisualStyleBackColor = true;
             this.bdelUser.Click += new System.EventHandler(this.bdelUser_Click);
             // 
+            // bEditTest
+            // 
+            this.bEditTest.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bEditTest.Location = new System.Drawing.Point(236, 463);
+            this.bEditTest.Name = "bEditTest";
+            this.bEditTest.Size = new System.Drawing.Size(333, 54);
+            this.bEditTest.TabIndex = 38;
+            this.bEditTest.Text = "Редактировать тест";
+            this.bEditTest.UseVisualStyleBackColor = true;
+            this.bEditTest.Click += new System.EventHandler(this.bEditTest_Click);
+            // 
             // DataBase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 469);
+            this.ClientSize = new System.Drawing.Size(581, 521);
+            this.Controls.Add(this.bEditTest);
             this.Controls.Add(this.bdelUser);
             this.Controls.Add(this.lResultDate);
             this.Controls.Add(this.ldate);
@@ -254,5 +267,6 @@
         private System.Windows.Forms.Label lResultDate;
         private System.Windows.Forms.Label ldate;
         private System.Windows.Forms.Button bdelUser;
+        private System.Windows.Forms.Button bEditTest;
     }
 }

@@ -12,32 +12,17 @@ namespace Test
 {
     public partial class TemplateWrite : Form
     {
-
-        private List<string> questionKeyList;
         private DataBaseConnection db;
-        private List<string> request;
         private string rightAnswer;
         private int score;
-       // private ChooseTest ct;
-     //   private int key;
 
         public TemplateWrite()
         {
             InitializeComponent();
-            
             db = new DataBaseConnection();
-            request = new List<string>();
-            request = db.severalSelectRequest("Select вопрос From Вопрос Where id =" + ChooseTest.keyQuetion + "");
-           // key = Convert.ToInt16(request[0]);
-            tbQuestion.Text = request[0];
-
-            request = new List<string>();
-            request = db.severalSelectRequest("Select ответ_правильный From Вопрос Where id =" + ChooseTest.keyQuetion + "");
-            rightAnswer = request[0];
-
-            request = new List<string>();
-            request = db.severalSelectRequest("Select балл From Вопрос Where id =" + ChooseTest.keyQuetion + "");
-            score = Convert.ToInt16(request[0]);
+            tbQuestion.Text =db.returnValue("Select вопрос From Вопрос Where id =" + ChooseTest.keyQuetion + "");
+            rightAnswer =db.returnValue("Select ответ_правильный From Вопрос Where id =" + ChooseTest.keyQuetion + "");
+            score = Convert.ToInt16(db.returnValue("Select балл From Вопрос Where id =" + ChooseTest.keyQuetion + ""));
         }
 
         private void bAccept_Click(object sender, EventArgs e)
@@ -52,7 +37,6 @@ namespace Test
                 ChooseTest.countWrongAnswers++;
             }
             this.Close();
-
         }
     }
 }
