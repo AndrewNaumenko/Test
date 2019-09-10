@@ -24,28 +24,9 @@ namespace Test
         private List<string> keyWrongQuestion;
         private List<string> keyListUser;
         private List<string> keyResults;
-
-
         private List<string> questionKeyList;
         public static int keyQuetion;
         private string type;
-        /* public static int countRightAnswers;
-      public static int countWrongAnswers;
-      public static int result;
-      public static string testName;
-      public static string name;
-      public static string surname;
-      public static string fatherName;
-      public static int keyQuetion;
-      public static int keyTest;
-      private string type;
-      public static int min = 0;
-      public static int sec = 0;
-      private Timer timer;
-      private List<string> questionKeyList;
-      private DataBaseConnection db;
-      private List<string> request;
-      public static DateTime date1 = new DateTime(0, 0);*/
 
         public DataBase()
         {
@@ -150,13 +131,14 @@ namespace Test
                 request2 = new List<List<string>>();
                 if (rbTest.Checked)
                     request2 = db.severalListSelectRequest2("Select DISTINCT количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест,Пользователь,Пользователи,Результаты,Результат Where   имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id and Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox1.SelectedItem.ToString() + "'");
-                if (rbUser.Checked)
-                    request2 = db.severalListSelectRequest2("Select DISTINCT количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест,Пользователь,Пользователи,Результаты,Результат Where   имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id and Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox2.SelectedItem.ToString() + "'");
-                lResulteRightAnswers.Text = request2[0][0];
-                lResulteScores.Text = request2[0][1];
-                lResulteTime.Text = request2[0][2];
-                lResulteWrongAnswers.Text = request2[0][3];
-                lResultDate.Text = request2[0][4];
+                    if (rbUser.Checked)
+                request2 = db.severalListSelectRequest2("Select DISTINCT количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста From Тест,Пользователь,Пользователи,Результаты,Результат Where   имя = '" + user[0] + "' and фамилия= '" + user[1] + "' and  отчество= '" + user[2] + "' and Результат.id = Результаты.id_результата and Результаты.id_пользователя = Пользователь.id and Пользователь.id = Пользователи.id_пользователя and Пользователи.id_теста = Тест.id and Тест.название = '" + listBox2.SelectedItem.ToString() + "'");
+
+                    lResulteRightAnswers.Text = request2[0][0];
+                    lResulteScores.Text = request2[0][3];
+                    lResulteTime.Text = request2[0][2];
+                    lResulteWrongAnswers.Text = request2[0][1];
+                    lResultDate.Text = request2[0][4];
             }
             catch
             {
@@ -265,8 +247,8 @@ namespace Test
 
         private void bEditTest_Click(object sender, EventArgs e)
         {
-            /*try
-            {*/
+            try
+            {
                 if (rbTest.Checked)
                 {
                     testName = listBox1.SelectedItem.ToString();
@@ -299,11 +281,11 @@ namespace Test
                             }
                     }
                 }
-          /*  }
+            }
             catch
             {
                 MessageBox.Show("Не найдено");
-            }*/
+            }
         }
 
     }

@@ -25,7 +25,7 @@ namespace Test
             ChooseTest.min = ChooseTest.date1.Minute;
             lResulteRightAnswers.Text = Convert.ToString(ChooseTest.countRightAnswers);
             lResulteScores.Text = Convert.ToString(ChooseTest.result);
-            lResulteTime.Text = Convert.ToString(ChooseTest.min) + ':' + Convert.ToString(ChooseTest.sec);
+            lResulteTime.Text = Convert.ToString(ChooseTest.date1.Minute) + ':' + Convert.ToString(ChooseTest.date1.Second);
             lResulteWrongAnswers.Text = Convert.ToString(ChooseTest.countWrongAnswers);
             db.Request("insert into Результат (количество_правильных_ответов,количество_неправильных_ответов,время_прохождения_теста,оценка,дата_прохождения_теста) values ('" + lResulteRightAnswers.Text + "','" + lResulteWrongAnswers.Text + "','" + lResulteTime.Text + "','" + lResulteScores.Text + "','" + DateTime.Now.ToLongDateString() + "')");
             keyResult = Convert.ToInt16(db.returnValue("Select MAX(id) From Результат"));

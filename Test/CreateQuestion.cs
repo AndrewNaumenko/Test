@@ -12,36 +12,13 @@ namespace Test
 {
     public partial class CreateQuestion : Form
     {
-
-       /* public static int countRightAnswers;
-        public static int countWrongAnswers;
-        public static int result;
-        public static string testName;
-        public static string name;
-        public static string surname;
-        public static string fatherName;
-        public static int keyQuetion;
-        public static int keyTest;
         private string type;
-        public static int min = 0;
-        public static int sec = 0;
-        private Timer timer;
-        private List<string> questionKeyList;
-        private DataBaseConnection db;
-        private List<string> request;
-        public static DateTime date1 = new DateTime(0, 0);*/
-
-        private string type;
-        //private int keyQuetion;
         private DataBaseConnection db;
         private int key;
         private int keyTest;
         private int keyQuestion;
-       // private string rightAnswer;
-      //  private int score;
         private List<string> request;
         private string rightAnswer;
-       // private List<string> questionKeyList;
 
         public CreateQuestion(Boolean edit,string type)
         {

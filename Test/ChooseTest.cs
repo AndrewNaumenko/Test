@@ -39,8 +39,8 @@ namespace Test
 
         private void bCreate_Click(object sender, EventArgs e)
         {
-            /*try
-            {*/
+            try
+            {
                 if (tbName.Text == "" || tbSurname.Text == "" || tbFathername.Text == "" || CBchooseTopic.Text == "" || lbTestName.SelectedItem.ToString() == null)
                 {
                     MessageBox.Show("Не все поля были заполнены");
@@ -88,11 +88,11 @@ namespace Test
                     Res.ShowDialog();
                 }
 
-           /* }
+            }
             catch
             {
                 MessageBox.Show("Ошибка");
-            }*/
+            }
         }
 
         private void CBchooseTopic_SelectedIndexChanged(object sender, EventArgs e)
